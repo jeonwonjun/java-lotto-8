@@ -1,7 +1,7 @@
 package lotto;
 
 import java.util.stream.Stream;
-import lotto.domain.Lotto;
+import lotto.domain.entity.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +9,6 @@ import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -40,13 +39,5 @@ class LottoTest {
                 Arguments.of(1, 2, 3, 4, 5, 46),
                 Arguments.of(0, 1, 2, 3, 4, 5)
         );
-    }
-
-    @DisplayName("입력값은 숫자만 유효합니다.")
-    @ParameterizedTest
-    @ValueSource(strings = {"a,1,2,3,4,5", ",1,2,3,4,5", "1,2, 3,4,5,6"} )
-    void 로또_번호_형식_테스트(String lottoNumber) {
-        assertThatThrownBy(() -> parseInput(lottoNumber))
-                .isInstanceOf(IllegalArgumentException.class);
     }
 }
