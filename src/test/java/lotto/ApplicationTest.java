@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -46,10 +47,20 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("구입금액은 숫자가 입력되어야 한다.")
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("구입금액은 1000단위로 입력되어야 한다.")
+    @Test
+    void 구입금액_단위테스트() {
+        assertSimpleTest(() -> {
+            runException("8700");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }

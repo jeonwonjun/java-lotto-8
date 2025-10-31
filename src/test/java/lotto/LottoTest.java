@@ -1,9 +1,15 @@
 package lotto;
 
+import java.util.stream.Stream;
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -21,5 +27,26 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // TODO: 추가 기능 구현에 따른 테스트 코드 작성
+    @DisplayName("로또 번호는 1~45 사이의 값이어야 합니다.")
+    @ParameterizedTest
+    @MethodSource("provideLottoLange")
+    void 로또_번호_범위_테스트(List<Integer> lottoNumber) {
+        assertThatThrownBy(() -> new Lotto(lottoNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    private static Stream<Arguments> provideLottoLange() {
+        return Stream.of(
+                Arguments.of(1, 2, 3, 4, 5, 46),
+                Arguments.of(0, 1, 2, 3, 4, 5)
+        );
+    }
+
+    @DisplayName("입력값은 숫자만 유효합니다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"a,1,2,3,4,5", ",1,2,3,4,5", "1,2, 3,4,5,6"} )
+    void 로또_번호_형식_테스트(String lottoNumber) {
+        assertThatThrownBy(() -> parseInput(lottoNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
