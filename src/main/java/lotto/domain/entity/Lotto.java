@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.domain;
 
 import java.util.List;
 
@@ -14,9 +14,5 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
         }
-    }
-
-    private List<String> parseInput(String input) {
-        return List.of(input.split(","));
     }
 }
