@@ -1,13 +1,13 @@
 package lotto.domain.entity;
 
+import static lotto.config.LottoConstants.LOTTO_NUMBER_COUNT;
+import static lotto.config.LottoConstants.MAX_RANGE;
+import static lotto.config.LottoConstants.MIN_RANGE;
+
 import java.util.List;
-import lotto.util.ErrorMessage;
+import lotto.config.ErrorMessage;
 
 public class Lotto {
-    private static final int MIN_RANGE = 1;
-    private static final int MAX_RANGE = 45;
-    private static final int LOTTO_NUMBER_COUNT = 6;
-    private static final int BONUS_NUMBER_SIZE = 1;
 
     private final List<Integer> numbers;
 
