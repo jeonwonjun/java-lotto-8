@@ -28,13 +28,13 @@ class LottoTest {
 
     @DisplayName("로또 번호는 1~45 사이의 값이어야 합니다.")
     @ParameterizedTest
-    @MethodSource("provideLottoLange")
+    @MethodSource("provideLottoRange")
     void 로또_번호_범위_테스트(List<Integer> lottoNumber) {
         assertThatThrownBy(() -> new Lotto(lottoNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    private static Stream<Arguments> provideLottoLange() {
+    private static Stream<Arguments> provideLottoRange() {
         return Stream.of(
                 Arguments.of(1, 2, 3, 4, 5, 46),
                 Arguments.of(0, 1, 2, 3, 4, 5)
