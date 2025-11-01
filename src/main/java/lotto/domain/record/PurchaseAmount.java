@@ -1,6 +1,6 @@
 package lotto.domain.record;
 
-import lotto.util.ErrorMessage;
+import lotto.config.ErrorMessage;
 
 public record PurchaseAmount(int amount) {
     private static final int LOTTO_PRICE = 1000;

@@ -1,6 +1,6 @@
 package lotto.controller;
 
-import lotto.util.Information;
+import lotto.config.Information;
 import lotto.view.InputView;
 
 public class ViewController {

@@ -1,6 +1,7 @@
 package lotto.util;
 
 import java.util.List;
+import lotto.config.ErrorMessage;
 
 public class LottoNumberParse {
     private static final String INPUT_DELIMITER = ",";

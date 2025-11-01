@@ -1,5 +1,7 @@
 package lotto.util;
 
+import lotto.config.ErrorMessage;
+
 public class PurchaseAmountParse {
     public static int parse(String input) {
         try {
