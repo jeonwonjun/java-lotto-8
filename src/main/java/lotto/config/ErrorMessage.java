@@ -1,4 +1,4 @@
-package lotto.util;
+package lotto.config;
 
 public enum ErrorMessage {
     EMPTY_NUMBER("[ERROR] 로또 번호에는 빈칸이 들어올 수 없습니다."),
