@@ -14,14 +14,14 @@ import lotto.util.RandomNumbers;
 public class LottoController {
 
     public void start() {
-        PurchaseAmount purchaseAmount = new PurchaseAmount(ViewController.inputPurchaseAmount());
+        PurchaseAmount purchaseAmount = ViewController.inputPurchaseAmount();
         int ticketCount = purchaseAmount.getTicketCount();
         ViewController.printTicketCount(ticketCount);
 
         LottoTickets lottoTickets = issueLottoTickets(ticketCount);
 
-        Lotto winningNumber = new Lotto(ViewController.inputWinningNumbers());
-        BonusNumber bonusNumber = new BonusNumber(ViewController.inputBonusNumber(), winningNumber.getNumbers());
+        Lotto winningNumber = ViewController.inputWinningNumbers();
+        BonusNumber bonusNumber = ViewController.inputBonusNumber(winningNumber.getNumbers());
         WinningNumbers winningNumbers = new WinningNumbers(winningNumber.getNumbers(), bonusNumber);
 
         LottoResults lottoResults = aggregateLottoResults(lottoTickets, winningNumbers);
