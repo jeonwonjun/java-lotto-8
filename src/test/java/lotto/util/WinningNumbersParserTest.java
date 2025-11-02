@@ -1,6 +1,6 @@
 package lotto.util;
 
-import static lotto.util.WinningNumbersParser.parse;
+import static lotto.util.parser.WinningNumbersParser.parse;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;

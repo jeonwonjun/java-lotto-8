@@ -1,4 +1,4 @@
-package lotto.util;
+package lotto.util.parser;
 
 import lotto.config.ErrorMessage;
 

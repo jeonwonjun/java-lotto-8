@@ -1,4 +1,4 @@
-package lotto.util;
+package lotto.util.parser;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +11,7 @@ public class WinningNumbersParser {
     public static List<Integer> parse(String input) {
         List<String> splitInput = parseByDelimiter(input);
         validate(splitInput);
-        return parseToLotto(splitInput);
+        return convertTo(splitInput);
     }
 
     private static void validate(List<String> splitInput) {
@@ -30,7 +30,7 @@ public class WinningNumbersParser {
         return List.of(input.split(INPUT_DELIMITER));
     }
 
-    private static List<Integer> parseToLotto(List<String> splitInput) {
+    private static List<Integer> convertTo(List<String> splitInput) {
         try {
             return splitInput.stream()
                     .map(Integer::parseInt)
