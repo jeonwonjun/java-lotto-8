@@ -18,4 +18,13 @@ public class WinningNumbers {
                 .map(LottoNumber::new)
                 .collect(Collectors.toList());
     }
+
+    public boolean contains(int myNumber) {
+        return winningNumbers.stream()
+                .anyMatch(lottoNumber -> lottoNumber.number() == myNumber);
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber.getNumber();
+    }
 }

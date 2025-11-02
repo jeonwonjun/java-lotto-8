@@ -6,6 +6,7 @@ import static lotto.config.LottoConstants.MIN_RANGE;
 
 import java.util.List;
 import lotto.config.ErrorMessage;
+import lotto.config.LottoConstants;
 
 public class Lotto {
 

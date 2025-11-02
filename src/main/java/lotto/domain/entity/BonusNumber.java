@@ -31,4 +31,8 @@ public class BonusNumber {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_DUPLICATE.getMessage());
         }
     }
+
+    public int getNumber() {
+        return this.number;
+    }
 }
