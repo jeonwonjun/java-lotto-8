@@ -3,7 +3,8 @@ package lotto.controller;
 public class LottoController {
 
     public void start() {
-        String input = ViewController.readPurchaseAmount();
+        int purchaseAmount = ViewController.inputPurchaseAmount();
 
+        int BonusNumber = ViewController.inputBonusNumber();
     }
 }

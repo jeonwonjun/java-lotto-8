@@ -1,13 +1,13 @@
 package lotto.util;
 
-import static lotto.util.LottoNumberParse.parse;
+import static lotto.util.WinningNumbersParser.parse;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class LottoNumberParseTest {
+public class WinningNumbersParserTest {
 
     @DisplayName("로또 번호는 숫자로만 이루어져야한다.")
     @ParameterizedTest
