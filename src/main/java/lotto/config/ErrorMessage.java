@@ -8,7 +8,7 @@ public enum ErrorMessage {
     INVALID_NUMBER_COUNT("[ERROR] 로또 번호는 6개여야 합니다."),
     INVALID_PURCHASE_AMOUNT_FORMAT("[ERROR] 구입 금액은 숫자여야 합니다."),
     INVALID_PURCHASE_AMOUNT_POINT("[ERROR] 구입 금액은 1000단위어야 합니다."),
-    INVALID_PURCHASE_AMOUNT_MIN("[ERROR] 구입 금액은 0원 이상이어야 합니다.");
+    INVALID_PURCHASE_AMOUNT_MIN("[ERROR] 구입 금액은 1000원 이상이어야 합니다.");
 
     private final String message;
 

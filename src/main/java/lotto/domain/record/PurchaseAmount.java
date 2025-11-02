@@ -6,7 +6,7 @@ public record PurchaseAmount(int amount) {
     private static final int LOTTO_PRICE = 1000;
 
     public PurchaseAmount {
-        if (amount < 0) {
+        if (amount < LOTTO_PRICE) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PURCHASE_AMOUNT_MIN.getMessage());
         }
         if (amount % LOTTO_PRICE != 0) {
