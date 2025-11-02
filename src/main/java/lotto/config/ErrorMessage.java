@@ -1,7 +1,7 @@
 package lotto.config;
 
 public enum ErrorMessage {
-    EMPTY_NUMBER("로또 번호에는 공백이 들어올 수 없습니다."),
+    BLANK_NUMBER("공백이 들어올 수 없습니다."),
     INVALID_NUMBER_RANGE("로또 번호는 1~45사이의 값이어야 합니다. "),
     INVALID_NUMBER_FORMAT("로또 번호는 숫자만 들어와야 합니다."),
     INVALID_NUMBER_DUPLICATE("로또 번호는 중복될 수 없습니다."),

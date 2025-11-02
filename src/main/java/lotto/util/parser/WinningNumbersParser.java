@@ -22,7 +22,7 @@ public class WinningNumbersParser {
 
     private static void validateBlank(String splitNumber) {
         if (splitNumber.isEmpty() || splitNumber.contains(INPUT_BLANK)) {
-            throw new IllegalArgumentException(ErrorMessage.EMPTY_NUMBER.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.BLANK_NUMBER.getMessage());
         }
     }
 
