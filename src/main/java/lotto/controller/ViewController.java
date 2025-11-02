@@ -3,24 +3,57 @@ package lotto.controller;
 import java.util.List;
 import java.util.Map;
 import lotto.config.LottoRank;
+import lotto.domain.entity.BonusNumber;
+import lotto.domain.entity.Lotto;
+import lotto.domain.record.PurchaseAmount;
 import lotto.util.ProfitRateCalculator;
 import lotto.util.parser.WinningNumbersParser;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class ViewController {
-    public static int inputPurchaseAmount() {
-        return InputView.inputPurchaseAmount();
+    public static PurchaseAmount inputPurchaseAmount() {
+        PurchaseAmount purchaseAmount = null;
+        OutputView.printPurchaseAmountPrompt();
+        while (purchaseAmount == null) {
+            try {
+                int amount = InputView.inputPurchaseAmount();
+                purchaseAmount = new PurchaseAmount(amount);
+                System.out.println();
+            } catch (IllegalArgumentException e) {
+                OutputView.printMessage(e.getMessage());
+            }
+        }
+        return purchaseAmount;
     }
 
-    public static List<Integer> inputWinningNumbers() {
-        String input = InputView.inputWinningNumbers();
-        System.out.println();
-        return WinningNumbersParser.parse(input);
+    public static Lotto inputWinningNumbers() {
+        Lotto winningNumbers = null;
+        OutputView.printWinningNumberPrompt();
+        while (winningNumbers == null) {
+            try {
+                String input = InputView.inputWinningNumbers();
+                winningNumbers = new Lotto(WinningNumbersParser.parse(input));
+                System.out.println();
+            } catch (IllegalArgumentException e) {
+                OutputView.printMessage(e.getMessage());
+            }
+        }
+        return winningNumbers;
     }
 
-    public static int inputBonusNumber() {
-        return InputView.inputBonusNumber();
+    public static BonusNumber inputBonusNumber(List<Integer> winningNumbers) {
+        BonusNumber bonusNumber = null;
+        OutputView.printBonusNumberPrompt();
+        while (bonusNumber == null) {
+            try {
+                int bonus = InputView.inputBonusNumber();
+                bonusNumber = new BonusNumber(bonus, winningNumbers);
+            } catch (IllegalArgumentException e) {
+                OutputView.printMessage(e.getMessage());
+            }
+        }
+        return bonusNumber;
     }
 
     public static void printTicketCount(int ticketCount) {

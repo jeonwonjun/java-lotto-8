@@ -5,15 +5,16 @@ import static lotto.view.OutputView.printMessage;
 
 import lotto.config.ErrorMessage;
 import lotto.config.Information;
+import lotto.util.parser.InputValidator;
 
 public class InputView {
 
     public static int inputPurchaseAmount() {
         while (true) {
             try {
-                return Integer.parseInt(readInput());
+                return InputValidator.validate(readInput());
             } catch (IllegalArgumentException e) {
-                printMessage(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage());
+                printMessage(e.getMessage());
             }
         }
     }
@@ -31,9 +32,9 @@ public class InputView {
     public static int inputBonusNumber() {
         while (true) {
             try {
-                return Integer.parseInt(readInput());
+                return InputValidator.validate(readInput());
             } catch (IllegalArgumentException e) {
-                printMessage(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage());
+                printMessage(e.getMessage());
             }
         }
     }
