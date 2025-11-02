@@ -9,6 +9,18 @@ import lotto.util.RandomNumbers;
 
 public class OutputView {
 
+    public static void printPurchaseAmountPrompt() {
+        printMessage(Information.INPUT_PURCHASE_AMOUNT.getMessage());
+    }
+
+    public static void printWinningNumberPrompt() {
+        printMessage(Information.INPUT_WINNING_NUMBER.getMessage());
+    }
+
+    public static void printBonusNumberPrompt() {
+        printMessage(Information.INPUT_BONUS_NUMBER.getMessage());
+    }
+
     public static void printTicketCount(int ticketCount) {
         printMessage(PrintFormat.ticketCountFormat(ticketCount));
     }
@@ -39,7 +51,7 @@ public class OutputView {
         printMessage(PrintFormat.profitFormat(profitRate));
     }
 
-    private static void printMessage(String message) {
+    public static void printMessage(String message) {
         System.out.println(message);
     }
 
