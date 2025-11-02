@@ -11,12 +11,10 @@ public class InputView {
     }
 
     public static String readWinningNumber() {
-        System.out.println();
         return InputView.readInput(Information.INPUT_WINNING_NUMBER.getMessage());
     }
 
     public static String readBonusNumber() {
-        System.out.println();
         return InputView.readInput(Information.INPUT_BONUS_NUMBER.getMessage());
     }
 
