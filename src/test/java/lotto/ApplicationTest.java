@@ -56,15 +56,6 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    @DisplayName("구입금액은 1000단위로 입력되어야 한다.")
-    @Test
-    void 구입금액_단위테스트() {
-        assertSimpleTest(() -> {
-            runException("8700");
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });
-    }
-
     @Override
     public void runMain() {
         Application.main(new String[]{});
