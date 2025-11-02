@@ -11,6 +11,10 @@ public class Lotto {
 
     private final List<Integer> numbers;
 
+    /**
+     * winningNumber 관리
+     * @param numbers
+     */
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
@@ -45,5 +49,9 @@ public class Lotto {
         if (numbers.size() != distinctSize) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_DUPLICATE.getMessage());
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
