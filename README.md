@@ -52,6 +52,28 @@
   - 당첨 금액의 합은 int가 아닌 다른 자료형으로 받아야 함.
  
 ## 예외 처리 목록
-|**예외 목록**|**예외**|**메시지 예시**|
-|--------------|---------------|-----------|
-|   로또 번호 6개 아님  |     IllegalArgumentException         |   [ERROR] 로또 번호는 6개여야 합니다.         |
+
+### 1. 구입 금액 입력 (PurchaseAmount) 관련 예외
+| **예외 발생 상황** | **검증할 도메인/메서드** | **기대 동작** |
+| --- | --- | --- |
+| **숫자가 아닌 문자**가 입력된 경우 (예: "1000j") | `InputView.inputPurchaseAmount()` | $\text{NumberFormatException}$ 포착 후 `IllegalArgumentException` 발생 및 재입력 유도 |
+| 입력 금액이 **빈 값**이거나 공백만 있는 경우 | `InputValidator.validate()` | `IllegalArgumentException` 발생 및 재입력 유도 |
+| 입력 금액이 **1,000원 단위가 아닌** 경우 (예: "1500") | `PurchaseAmount` | `IllegalArgumentException` 발생 및 재입력 유도 |
+| 입력 금액이 **로또 최소 금액(1,000원) 미만**인 경우 (예: "500") | `PurchaseAmount` | `IllegalArgumentException` 발생 및 재입력 유도 |
+
+### 2. 당첨 번호 (WinningNumbers) 관련 예외
+| **예외 발생 상황** | **검증할 도메인/메서드** | **기대 동작** |
+| --- | --- | --- |
+| 입력된 번호의 **갯수가 6개가 아닌** 경우 (예: 5개 또는 7개) | `Lotto` | `IllegalArgumentException` 발생 및 재입력 유도 |
+| 입력된 번호에 **중복된 숫자**가 있는 경우 (예: "1,2,3,4,5,5") | `Lotto` | `IllegalArgumentException` 발생 및 재입력 유도 |
+| 입력된 번호에 **1~45 범위를 벗어난 숫자**가 있는 경우 (예: "0,1,2,3,4,46") | `Lotto` | `IllegalArgumentException` 발생 및 재입력 유도 |
+| 입력된 번호에 **공백**이 있는 경우 (예: "1 ,2,5,3,4,46") | `WinningNumbersParse` | `IllegalArgumentException` 발생 및 재입력 유도 |
+| **구분자(쉼표) 외의 문자**가 포함된 경우 (파싱 오류) | `InputView` 파싱 로직 | `NumberFormatException` 포착 후 `IllegalArgumentException` 발생 및 재입력 유도 |
+
+### 3. 보너스 번호 (BonusNumber) 관련 예외
+| **예외 발생 상황** | **검증할 도메인/메서드** | **기대 동작** |
+| --- | --- | --- |
+| 보너스 번호가 **당첨 번호 6개 중 하나와 중복**되는 경우 (예: 당첨이 {1-6}일 때, 보너스가 "3") | `BonusNumber` | `IllegalArgumentException` 발생 및 재입력 유도 |
+| 보너스 번호가 **1~45 범위를 벗어난 숫자**인 경우 (예: "0" 또는 "46") | `BonusNumber` | `IllegalArgumentException` 발생 및 재입력 유도 |
+| 보너스 번호가 **하나의 정수 형태가 아닌** 경우 (예: "7,8") | `InputView` 파싱 로직 | `IllegalArgumentException` 발생 및 재입력 유도 |
+
