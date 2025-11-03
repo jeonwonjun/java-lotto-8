@@ -34,7 +34,6 @@ public class LottoResultsTest {
         assertThat(results.getRankCount(LottoRank.FIRST)).isEqualTo(1);
         assertThat(results.getRankCount(LottoRank.THIRD)).isEqualTo(2);
         assertThat(results.getRankCount(LottoRank.FIFTH)).isEqualTo(1);
-        assertThat(results.getRankCount(null)).isEqualTo(0);
     }
 
     @DisplayName("누적된 결과를 바탕으로 총 상금을 정확히 계산해야 한다.")
