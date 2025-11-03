@@ -1,17 +1,10 @@
 package lotto.domain.record;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.*;
-import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import lotto.util.parser.InputValidator;
-import lotto.view.InputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class PurchaseAmountTest {
 
