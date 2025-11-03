@@ -1,6 +1,4 @@
-package lotto.util.parser;
-
-import static lotto.view.OutputView.printMessage;
+package lotto.util;
 
 import lotto.config.ErrorMessage;
 

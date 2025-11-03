@@ -17,25 +17,6 @@ public class RandomNumbers {
                 .collect(Collectors.toList());
     }
 
-    public int countMatch(WinningNumbers winningNumbers) {
-        int matchCount = 0;
-
-        for (int myNumber : lottoTicket) {
-            if (winningNumbers.contains(myNumber)) {
-                matchCount++;
-            }
-        }
-        return matchCount;
-    }
-
-    public boolean matchBonusNumber (WinningNumbers winningNumbers) {
-        int matchCount = countMatch(winningNumbers);
-        if (matchCount == LottoConstants.THIRD_RANK_MATCH_COUNT) {
-            return lottoTicket.contains(winningNumbers.getBonusNumber());
-        }
-        return false;
-    }
-
     public List<Integer> getLottoTicket() {
         return lottoTicket;
     }
