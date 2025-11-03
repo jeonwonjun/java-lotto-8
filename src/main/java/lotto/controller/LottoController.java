@@ -26,7 +26,7 @@ public class LottoController {
         LottoResults lottoResults = aggregateLottoResults(lottoTickets, winningNumbers);
 
         ViewController.printResults(lottoResults.getRankCounts());
-        ViewController.printProfit(purchaseAmount.amount());
+        ViewController.printProfit(lottoResults, (double) purchaseAmount.amount());
     }
 
     private LottoTickets issueLottoTickets(int ticketCount) {

@@ -12,5 +12,4 @@ public record LottoNumber(int number) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_RANGE.getMessage());
         }
     }
-
 }

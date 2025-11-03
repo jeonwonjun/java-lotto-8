@@ -27,10 +27,7 @@ public class LottoResults {
                 .sum();
     }
 
-    public double calculateProfitRate(int purchaseAmount) {
-        if (purchaseAmount == 0) {
-            return 0.0;
-        }
+    public double calculateProfitRate(double purchaseAmount) {
         double totalPrize = calculateTotalPrize();
         return (totalPrize / purchaseAmount) * 100.0;
     }

@@ -68,8 +68,7 @@ public class ViewController {
         OutputView.printWinningResults(rankCounts);
     }
 
-    public static void printProfit(int purchaseAmount) {
-        LottoResults lottoResults = new LottoResults();
-        OutputView.printProfitRate(lottoResults.calculateProfitRate((int) purchaseAmount));
+    public static void printProfit(LottoResults lottoResults, double purchaseAmount) {
+        OutputView.printProfitRate(lottoResults.calculateProfitRate(purchaseAmount));
     }
 }
