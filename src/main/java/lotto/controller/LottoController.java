@@ -8,7 +8,6 @@ import lotto.domain.entity.LottoResults;
 import lotto.domain.entity.LottoTickets;
 import lotto.domain.entity.WinningNumbers;
 import lotto.domain.record.PurchaseAmount;
-import lotto.util.PrizeCalculator;
 import lotto.util.RandomNumbers;
 
 public class LottoController {
@@ -26,20 +25,19 @@ public class LottoController {
 
         LottoResults lottoResults = aggregateLottoResults(lottoTickets, winningNumbers);
 
-        double totalResult = PrizeCalculator.calculate(lottoResults.getRankCounts());
         ViewController.printResults(lottoResults.getRankCounts());
-        ViewController.printProfit(totalResult, (double) purchaseAmount.amount());
+        ViewController.printProfit(purchaseAmount.amount());
     }
 
     private LottoTickets issueLottoTickets(int ticketCount) {
         LottoTickets lottoTickets = new LottoTickets();
 
         for (int i = 0; i < ticketCount; i++) {
-            RandomNumbers randomNumbers = new RandomNumbers();
+            Lotto lotto = new Lotto(RandomNumbers.generate());
 
-            ViewController.printTicket(randomNumbers.getLottoTicket());
+            ViewController.printTicket(lotto.getNumbers());
 
-            lottoTickets.addTicket(randomNumbers);
+            lottoTickets.addTicket(lotto);
         }
 
         System.out.println();
@@ -50,11 +48,11 @@ public class LottoController {
     private LottoResults aggregateLottoResults(LottoTickets lottoTickets, WinningNumbers winningNumbers) {
         LottoResults lottoResults = new LottoResults();
 
-        for (RandomNumbers randomNumbers : lottoTickets.getTickets()) {
-            int matchCount = randomNumbers.countMatch(winningNumbers);
-            boolean matchBonus = randomNumbers.matchBonusNumber(winningNumbers);
+        for (Lotto lotto : lottoTickets.getTickets()) {
+            int matchCount = lotto.countMatch(winningNumbers);
+            boolean matchBonus = lotto.containsBonusNumber(winningNumbers);
 
-            LottoRank rank = LottoResults.findRankByMatchBonus(matchCount, matchBonus);
+            LottoRank rank = LottoRank.valueOf(matchCount, matchBonus);
             lottoResults.addResult(rank);
         }
 

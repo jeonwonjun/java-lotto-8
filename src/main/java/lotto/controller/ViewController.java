@@ -5,9 +5,9 @@ import java.util.Map;
 import lotto.config.LottoRank;
 import lotto.domain.entity.BonusNumber;
 import lotto.domain.entity.Lotto;
+import lotto.domain.entity.LottoResults;
 import lotto.domain.record.PurchaseAmount;
-import lotto.util.ProfitRateCalculator;
-import lotto.util.parser.WinningNumbersParser;
+import lotto.util.WinningNumbersParser;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -68,8 +68,8 @@ public class ViewController {
         OutputView.printWinningResults(rankCounts);
     }
 
-    public static void printProfit(double purchaseAmount, double totalPrize) {
-        double profitRate = ProfitRateCalculator.calculate(purchaseAmount, totalPrize);
-        OutputView.printProfitRate(profitRate);
+    public static void printProfit(int purchaseAmount) {
+        LottoResults lottoResults = new LottoResults();
+        OutputView.printProfitRate(lottoResults.calculateProfitRate((int) purchaseAmount));
     }
 }

@@ -29,6 +29,7 @@ public enum LottoRank {
         if (matchCount == SECOND.matchCount && matchBonus) {
             return SECOND;
         }
+
         if (matchCount == THIRD.matchCount) {
             return THIRD;
         }

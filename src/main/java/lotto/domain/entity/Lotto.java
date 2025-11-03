@@ -63,11 +63,6 @@ public class Lotto {
         return this.numbers.contains(winningNumbers.getBonusNumber());
     }
 
-    public boolean matchSecond(WinningNumbers winningNumbers) {
-        int matchCount = countMatch(winningNumbers);
-        return matchCount == LottoConstants.THIRD_RANK_MATCH_COUNT && containsBonusNumber(winningNumbers);
-    }
-
     public List<Integer> getNumbers() {
         return numbers;
     }

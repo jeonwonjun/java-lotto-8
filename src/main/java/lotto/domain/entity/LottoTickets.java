@@ -5,13 +5,13 @@ import java.util.List;
 import lotto.util.RandomNumbers;
 
 public class LottoTickets {
-    private List<RandomNumbers> tickets = new ArrayList<>();
+    private List<Lotto> tickets = new ArrayList<>();
 
-    public void addTicket(RandomNumbers ticket) {
+    public void addTicket(Lotto ticket) {
         tickets.add(ticket);
     }
 
-    public List<RandomNumbers> getTickets() {
+    public List<Lotto> getTickets() {
         return tickets;
     }
 }
