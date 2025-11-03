@@ -17,13 +17,9 @@ public class LottoResultsTest {
 
     private LottoResults lottoResults;
 
-    @BeforeEach
-    void setup() {
-    }
-
     @DisplayName("등수별 갯수를 정확하게 누적해야 한다.")
     @Test
-    void addResult_등수별_갯수_누적() {
+    void 등수별_갯수_누적() {
         // given
         LottoResults results = new LottoResults();
 
