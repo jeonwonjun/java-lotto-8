@@ -9,11 +9,19 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class WinningNumbersParserTest {
 
-    @DisplayName("로또 번호는 숫자로만 이루어져야한다.")
+    @DisplayName("로또 번호는 공백은 입력되면 안된다.")
     @ParameterizedTest
-    @ValueSource(strings = {"a,1,2,3,4,5", "1,2,3,4,,6", "1,2, 1 3,4,5,6"} )
-    void 로또_번호_형식_테스트(String lottoNumber) {
-        assertThatThrownBy(() -> parse(lottoNumber))
+    @ValueSource(strings = {",1,2,3,4,5", "1,2,3,4,,6,7", "1,2, 1 3,4,5,6", "1,2,3,4,5,6 "})
+    void 예외_당첨_번호_공백(String input) {
+        assertThatThrownBy(() -> parse(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호는 숫자로만 입력되어야 한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"a,2,3,4,5,6", "1,2,3,/,5,6", ";;"})
+    void 예외_당첨_번호_형식(String input) {
+        assertThatThrownBy(() -> parse(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
