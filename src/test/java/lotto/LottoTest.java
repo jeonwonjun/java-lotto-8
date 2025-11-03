@@ -101,7 +101,7 @@ class LottoTest {
                 Arguments.of(List.of(1, 2, 3, 7, 11, 12), 3, true),
                 Arguments.of(List.of(1, 2, 3, 4, 11, 12), 4, false),
                 Arguments.of(List.of(1, 2, 3, 4, 5, 12), 5, false),
-                Arguments.of(List.of(1, 2, 3, 4, 5, 7), 5), true,
+                Arguments.of(List.of(1, 2, 3, 4, 5, 7), 5, true),
                 Arguments.of(List.of(1, 2, 3, 4, 5, 6), 6, false)
         );
     }

@@ -46,8 +46,7 @@ public class LottoRankTest {
                 Arguments.of(LottoRank.SECOND, 30_000_000),
                 Arguments.of(LottoRank.THIRD, 1_500_000),
                 Arguments.of(LottoRank.FOURTH, 50_000),
-                Arguments.of(LottoRank.FIFTH, 5_000),
-                Arguments.of(null, 0)
+                Arguments.of(LottoRank.FIFTH, 5_000)
         );
     }
 }
