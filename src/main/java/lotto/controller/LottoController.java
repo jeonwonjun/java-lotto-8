@@ -11,22 +11,25 @@ import lotto.domain.record.PurchaseAmount;
 import lotto.util.RandomNumbers;
 
 public class LottoController {
+    private final ViewController view;
+
+    public LottoController(ViewController view) {
+        this.view = view;
+    }
 
     public void start() {
-        PurchaseAmount purchaseAmount = ViewController.inputPurchaseAmount();
+        PurchaseAmount purchaseAmount = view.inputPurchaseAmount();
         int ticketCount = purchaseAmount.getTicketCount();
-        ViewController.printTicketCount(ticketCount);
+        view.printTicketCount(ticketCount);
 
         LottoTickets lottoTickets = issueLottoTickets(ticketCount);
 
-        Lotto winningNumber = ViewController.inputWinningNumbers();
-        BonusNumber bonusNumber = ViewController.inputBonusNumber(winningNumber.getNumbers());
-        WinningNumbers winningNumbers = new WinningNumbers(winningNumber.getNumbers(), bonusNumber);
+        WinningNumbers winningNumbers = getWinningNumbersFromUser();
 
-        LottoResults lottoResults = aggregateLottoResults(lottoTickets, winningNumbers);
+        LottoResults lottoResults = lottoTickets.aggregateLottoResults(winningNumbers);
 
-        ViewController.printResults(lottoResults.getRankCounts());
-        ViewController.printProfit(lottoResults, (double) purchaseAmount.amount());
+        view.printResults(lottoResults.getRankCounts());
+        view.printProfit(lottoResults, (double) purchaseAmount.amount());
     }
 
     private LottoTickets issueLottoTickets(int ticketCount) {
@@ -34,28 +37,17 @@ public class LottoController {
 
         for (int i = 0; i < ticketCount; i++) {
             Lotto lotto = new Lotto(RandomNumbers.generate());
-
-            ViewController.printTicket(lotto.getNumbers());
-
+            view.printTicket(lotto.getNumbers());
             lottoTickets.addTicket(lotto);
         }
-
         System.out.println();
 
         return lottoTickets;
     }
 
-    private LottoResults aggregateLottoResults(LottoTickets lottoTickets, WinningNumbers winningNumbers) {
-        LottoResults lottoResults = new LottoResults();
-
-        for (Lotto lotto : lottoTickets.getTickets()) {
-            int matchCount = lotto.countMatch(winningNumbers);
-            boolean matchBonus = lotto.containsBonusNumber(winningNumbers);
-
-            LottoRank rank = LottoRank.valueOf(matchCount, matchBonus);
-            lottoResults.addResult(rank);
-        }
-
-        return lottoResults;
+    private WinningNumbers getWinningNumbersFromUser() {
+        Lotto winningNumber = view.inputWinningNumbers();
+        BonusNumber bonusNumber = view.inputBonusNumber(winningNumber.getNumbers());
+        return new WinningNumbers(winningNumber.getNumbers(), bonusNumber);
     }
 }

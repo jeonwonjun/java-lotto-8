@@ -12,7 +12,7 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class ViewController {
-    public static PurchaseAmount inputPurchaseAmount() {
+    public PurchaseAmount inputPurchaseAmount() {
         PurchaseAmount purchaseAmount = null;
         OutputView.printPurchaseAmountPrompt();
         while (purchaseAmount == null) {
@@ -27,7 +27,7 @@ public class ViewController {
         return purchaseAmount;
     }
 
-    public static Lotto inputWinningNumbers() {
+    public Lotto inputWinningNumbers() {
         Lotto winningNumbers = null;
         OutputView.printWinningNumberPrompt();
         while (winningNumbers == null) {
@@ -42,7 +42,7 @@ public class ViewController {
         return winningNumbers;
     }
 
-    public static BonusNumber inputBonusNumber(List<Integer> winningNumbers) {
+    public BonusNumber inputBonusNumber(List<Integer> winningNumbers) {
         BonusNumber bonusNumber = null;
         OutputView.printBonusNumberPrompt();
         while (bonusNumber == null) {
@@ -56,19 +56,19 @@ public class ViewController {
         return bonusNumber;
     }
 
-    public static void printTicketCount(int ticketCount) {
+    public void printTicketCount(int ticketCount) {
         OutputView.printTicketCount(ticketCount);
     }
 
-    public static void printTicket(List<Integer> randomNumbers) {
+    public void printTicket(List<Integer> randomNumbers) {
         OutputView.printLottoTicket(randomNumbers);
     }
 
-    public static void printResults(Map<LottoRank, Integer> rankCounts) {
+    public void printResults(Map<LottoRank, Integer> rankCounts) {
         OutputView.printWinningResults(rankCounts);
     }
 
-    public static void printProfit(LottoResults lottoResults, double purchaseAmount) {
+    public void printProfit(LottoResults lottoResults, double purchaseAmount) {
         OutputView.printProfitRate(lottoResults.calculateProfitRate(purchaseAmount));
     }
 }
