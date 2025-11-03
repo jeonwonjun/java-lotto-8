@@ -77,3 +77,42 @@
 | 보너스 번호가 **1~45 범위를 벗어난 숫자**인 경우 (예: "0" 또는 "46") | `BonusNumber` | `IllegalArgumentException` 발생 및 재입력 유도 |
 | 보너스 번호가 **하나의 정수 형태가 아닌** 경우 (예: "7,8") | `InputView` 파싱 로직 | `IllegalArgumentException` 발생 및 재입력 유도 |
 
+## 클래스 구조
+```
+───main
+   └───java
+       └───lotto
+           │   Application.java
+           │
+           ├───config
+           │       ErrorMessage.java
+           │       Information.java
+           │       LottoConstants.java
+           │       LottoRank.java
+           │
+           ├───controller
+           │       LottoController.java
+           │       ViewController.java
+           │
+           ├───domain
+           │   ├───entity
+           │   │       BonusNumber.java
+           │   │       Lotto.java
+           │   │       LottoResults.java
+           │   │       LottoTickets.java
+           │   │       WinningNumbers.java
+           │   │
+           │   └───record
+           │           LottoNumber.java
+           │           PurchaseAmount.java
+           │
+           ├───util
+           │       InputValidator.java
+           │       RandomNumbers.java
+           │       WinningNumbersParser.java
+           │
+           └───view
+                   InputView.java
+                   OutputView.java
+                   PrintFormat.java
+```
