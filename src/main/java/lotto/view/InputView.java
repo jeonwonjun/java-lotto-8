@@ -3,9 +3,7 @@ package lotto.view;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static lotto.view.OutputView.printMessage;
 
-import lotto.config.ErrorMessage;
-import lotto.config.Information;
-import lotto.util.parser.InputValidator;
+import lotto.util.InputValidator;
 
 public class InputView {
 

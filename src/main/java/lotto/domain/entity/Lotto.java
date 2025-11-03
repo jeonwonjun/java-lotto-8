@@ -12,10 +12,6 @@ public class Lotto {
 
     private final List<Integer> numbers;
 
-    /**
-     * winningNumber 관리
-     * @param numbers
-     */
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
@@ -50,6 +46,26 @@ public class Lotto {
         if (numbers.size() != distinctSize) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_DUPLICATE.getMessage());
         }
+    }
+
+    public int countMatch(WinningNumbers winningNumbers) {
+        int matchCount = 0;
+
+        for (int myNumber : this.numbers) {
+            if (winningNumbers.contains(myNumber)) {
+                matchCount++;
+            }
+        }
+        return matchCount;
+    }
+
+    public boolean containsBonusNumber(WinningNumbers winningNumbers) {
+        return this.numbers.contains(winningNumbers.getBonusNumber());
+    }
+
+    public boolean matchSecond(WinningNumbers winningNumbers) {
+        int matchCount = countMatch(winningNumbers);
+        return matchCount == LottoConstants.THIRD_RANK_MATCH_COUNT && containsBonusNumber(winningNumbers);
     }
 
     public List<Integer> getNumbers() {

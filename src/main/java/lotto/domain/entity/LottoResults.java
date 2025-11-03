@@ -15,27 +15,24 @@ public class LottoResults {
         }
     }
 
-    public static LottoRank findRankByMatchBonus(int matchCount, boolean matchBonus) {
-        if (matchCount == MATCH_FIVE && matchBonus) {
-            return LottoRank.SECOND;
-        }
-
-        return findRankByMatchCount(matchCount);
-    }
-
-    private static LottoRank findRankByMatchCount(int matchCount) {
-        for (LottoRank rank : LottoRank.values()) {
-            if (matchCount == rank.getMatchCount()) {
-                return rank;
-            }
-        }
-        return null;
-    }
-
     public void addResult(LottoRank rank) {
         if (rank != null) {
             rankCounts.put(rank, rankCounts.get(rank) + 1);
         }
+    }
+
+    public double calculateTotalPrize() {
+        return rankCounts.entrySet().stream()
+                .mapToDouble(entry -> entry.getKey().getPrize() * entry.getValue())
+                .sum();
+    }
+
+    public double calculateProfitRate(int purchaseAmount) {
+        if (purchaseAmount == 0) {
+            return 0.0;
+        }
+        double totalPrize = calculateTotalPrize();
+        return (totalPrize / purchaseAmount) * 100.0;
     }
 
     public int getRankCount(LottoRank rank) {
