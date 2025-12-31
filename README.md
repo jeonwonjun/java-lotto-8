@@ -17,7 +17,7 @@
   - [예외] 1~45까지의 범위를 가진다.
   - [예외] 당첨 번호와 중복되면 안된다.
      
-* 사용자가 잘못된 값을 입력할 경우 ```IllegalArgumentException``을 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 ```그 부분부터 다시 입력 받는다.```
+* 사용자가 잘못된 값을 입력할 경우 ```IllegalArgumentException```을 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 ```그 부분을 다시 입력받는다.```
   - ```IllegalArgumentException```, ```IllegalStateException``` 등과 같은 명확한 유형을 처리한다.
  
 2. 로또 실행
